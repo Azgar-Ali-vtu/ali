@@ -1,0 +1,47 @@
+import java.util.*;
+
+class Solution {
+    public String largestNumber(int[] nums) {
+        String[] arr = new String[nums.length];
+
+        for (int i = 0; i < nums.length; i++) {
+            arr[i] = String.valueOf(nums[i]);
+        }
+
+        Arrays.sort(arr, new Comparator<String>() {
+            public int compare(String a, String b) {
+                return (b + a).compareTo(a + b);
+            }
+        });
+
+        if (arr[0].equals("0")) {
+            return "0";
+        }
+
+        StringBuilder result = new StringBuilder();
+
+        for (String s : arr) {
+            result.append(s);
+        }
+
+        return result.toString();
+    }
+}
+
+Case 1
+Input
+nums =
+[10,2]
+Output
+"210"
+Expected
+"210"
+
+CASE-2
+Input
+nums =
+[3,30,34,5,9]
+Output
+"9534330"
+Expected
+"9534330"
