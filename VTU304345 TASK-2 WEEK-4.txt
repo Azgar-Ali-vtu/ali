@@ -1,0 +1,38 @@
+t = int(input())
+
+for _ in range(t):
+    s = input().strip()
+
+    n = len(s)
+    mid = n // 2
+
+    first = s[:mid]
+
+    if n % 2 == 0:
+        second = s[mid:]
+    else:
+        second = s[mid + 1:]
+
+    if sorted(first) == sorted(second):
+        print("YES")
+    else:
+        print("NO")
+
+output
+Sub-Task	Task #	Result
+(time)
+1	0	Correct
+(0.01)
+Subtask Score: 20%	Result - Correct
+2	1	Correct
+(0.00)
+Subtask Score: 20%	Result - Correct
+3	2	Correct
+(0.00)
+Subtask Score: 20%	Result - Correct
+4	3	Correct
+(0.02)
+Subtask Score: 20%	Result - Correct
+5	4	Correct
+(0.01)
+Subtask Score: 20%	Result - Correct
