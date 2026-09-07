@@ -1,0 +1,80 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+    static int[] circularPalindromes(String s) {
+        int n = s.length();
+        int[] ans = new int[n];
+        String t = s + s;
+
+        for (int i = 0; i < n; i++) {
+            int max = 1;
+
+            for (int c = i; c < i + n; c++) {
+                int l = c, r = c;
+                while (l >= i && r < i + n && t.charAt(l) == t.charAt(r)) {
+                    max = Math.max(max, r - l + 1);
+                    l--;
+                    r++;
+                }
+
+                l = c;
+                r = c + 1;
+                while (l >= i && r < i + n && t.charAt(l) == t.charAt(r)) {
+                    max = Math.max(max, r - l + 1);
+                    l--;
+                    r++;
+                }
+            }
+
+            ans[i] = max;
+        }
+
+        return ans;
+    }
+
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int n = Integer.parseInt(br.readLine().trim());
+        String s = br.readLine().trim();
+
+        int[] ans = circularPalindromes(s);
+
+        for (int i = 0; i < n; i++) {
+            System.out.println(ans[i]);
+        }
+    }
+}
+
+nput (stdin)
+13
+aaaaabbbbaaaa
+Your Output (stdout)
+12
+12
+10
+8
+8
+9
+11
+13
+11
+9
+8
+8
+10
+Expected Output
+12
+12
+10
+8
+8
+9
+11
+13
+11
+9
+8
+8
+10
